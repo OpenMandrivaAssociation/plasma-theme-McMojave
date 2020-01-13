@@ -19,6 +19,7 @@ sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
 
 cd McMojave-circle-master
 sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
+sed -i -e 's,gtk-update-icon-cache,# gtk-update-icon-cache,g' install.sh
 
 %build
 # Nothing to do...
