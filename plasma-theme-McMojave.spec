@@ -26,11 +26,21 @@ cd McMojave-circle-master
 sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
 sed -i -e 's,gtk-update-icon-cache,# gtk-update-icon-cache,g' install.sh
 
+# Teach McMojave that Falkon is a browser
+ln -s browser.svg links/apps/scalable/falkon.svg
+
 # Replace copyrighted logo
 cp -f %{_datadir}/icons/openmandriva.svg src/apps/scalable/preferences-desktop-icons.svg
-
-# And teach McMojave that Falkon is a browser
-ln -s browser.svg links/apps/scalable/falkon.svg
+cp -f %{_datadir}/icons/openmandriva.svg src/places/symbolic/start-here-symbolic.svg
+cp -f %{_datadir}/icons/openmandriva.svg src/places/16/folder-apple.svg
+cp -f %{_datadir}/icons/openmandriva.svg src/status/22/start-here-symbolic.svg
+cd ..
+cp -f %{_datadir}/icons/openmandriva.svg plasma/desktoptheme/McMojave/icons/
+gzip -9 plasma/desktoptheme/McMojave/icons/openmandriva.svg
+mv -f plasma/desktoptheme/McMojave/icons/openmandriva.svg.gz plasma/desktoptheme/McMojave/icons/start.svgz
+cp -f plasma/desktoptheme/McMojave/icons/start.svgz plasma/desktoptheme/McMojave-light/icons/
+cp -f %{_datadir}/icons/openmandriva.svg plasma/look-and-feel/com.github.vinceliuice.McMojave/contents/splash/images/logo.svg
+cp -f %{_datadir}/icons/openmandriva.svg plasma/look-and-feel/com.github.vinceliuice.McMojave-light/contents/splash/images/logo.svg
 
 %build
 # Nothing to do...
