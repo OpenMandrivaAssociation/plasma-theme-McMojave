@@ -1,10 +1,12 @@
 Name: plasma-theme-McMojave
 Summary: Plasma theme resembling macOS
 Version: 2020.01.13
-Release: 2
+Release: 3
 # Similar theme exists at https://github.com/zayronxio/Plasma-MojaveCT
 Source0: https://github.com/vinceliuice/McMojave-kde/archive/master/McMojave-kde-%{version}.tar.gz
 Source1: https://github.com/vinceliuice/McMojave-circle/archive/master/McMojave-circle-%{version}.tar.gz
+# Let's add a fitting mouse cursor theme...
+Source2: https://github.com/douglascomim/MacOSMOD/archive/master/MacOSMOD-%{version}.tar.gz
 Group: Graphical Desktop/KDE
 License: GPLv3
 BuildArch: noarch
@@ -20,6 +22,7 @@ Plasma theme resembling macOS
 
 %prep
 %autosetup -p1 -n McMojave-kde-master -a 1
+tar xf %{S:2}
 # Replace per-user install paths with system wide paths
 sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
 
@@ -50,11 +53,17 @@ cp -f %{_datadir}/icons/openmandriva.svg plasma/look-and-feel/com.github.vinceli
 ./install.sh
 cd McMojave-circle-master
 ./install.sh
+cd ..
 
 # Let's not depend on gnome stuff too much...
 sed -i -e 's|Adwaita|breeze,Adwaita|g' %{buildroot}%{_datadir}/icons/McMojave-circle/index.theme
 sed -i -e 's|Adwaita|breeze-dark,Adwaita|g' %{buildroot}%{_datadir}/icons/McMojave-circle-dark/index.theme
 
+# Add the mouse cursors
+cp -a MacOSMOD-master/cursors %{buildroot}%{_datadir}/icons/McMojave-circle/
+cp -a MacOSMOD-master/index.theme %{buildroot}%{_datadir}/icons/McMojave-circle/cursor.theme
+ln -s ../McMojave-circle/cursors %{buildroot}%{_datadir}/icons/McMojave-circle-dark/
+ln -s ../McMojave-circle/cursor.theme %{buildroot}%{_datadir}/icons/McMojave-circle-dark/
 
 %files
 %license LICENSE
