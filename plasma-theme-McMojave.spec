@@ -5,7 +5,7 @@ Summary: Plasma theme resembling macOS
 Version: 2020.07.10
 Release: 1
 # Similar theme exists at https://github.com/zayronxio/Plasma-MojaveCT
-Source0: https://github.com/vinceliuice/McMojave-kde/archive/master/McMojave-kde-%(echo %{version} | sed -i 's/\./-/g').tar.gz
+Source0: https://github.com/vinceliuice/McMojave-kde/archive/master/McMojave-kde-%(echo %{version} | sed -e 's/\./-/g').tar.gz
 Source1: https://github.com/vinceliuice/McMojave-circle/archive/master/McMojave-circle-%{circle_version}.tar.gz
 # Let's add a fitting mouse cursor theme...
 Source2: https://github.com/douglascomim/MacOSMOD/archive/master/MacOSMOD-%{version}.tar.gz
@@ -23,7 +23,7 @@ BuildRequires: distro-release-theme
 Plasma theme resembling macOS.
 
 %prep
-%autosetup -p1 -n McMojave-kde-%(echo %{version} | sed -i 's/\./-/g') -a 1
+%autosetup -p1 -n McMojave-kde-%(echo %{version} | sed -e 's/\./-/g') -a 1
 tar xf %{S:2}
 # Replace per-user install paths with system wide paths
 sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
