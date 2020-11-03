@@ -6,7 +6,7 @@ Version: 2020.07.10
 Release: 1
 # Similar theme exists at https://github.com/zayronxio/Plasma-MojaveCT
 Source0: https://github.com/vinceliuice/McMojave-kde/archive/master/McMojave-kde-%(echo %{version} | sed -i 's/\./-/g').tar.gz
-Source1: https://github.com/vinceliuice/McMojave-circle/archive/master/McMojave-circle-%(echo %{circle_version} | sed -i 's/\./-/g').tar.gz
+Source1: https://github.com/vinceliuice/McMojave-circle/archive/master/McMojave-circle-%{circle_version}.tar.gz
 # Let's add a fitting mouse cursor theme...
 Source2: https://github.com/douglascomim/MacOSMOD/archive/master/MacOSMOD-%{version}.tar.gz
 Group: Graphical Desktop/KDE
