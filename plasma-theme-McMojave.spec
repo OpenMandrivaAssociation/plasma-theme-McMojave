@@ -76,3 +76,8 @@ ln -s ../McMojave-circle/cursor.theme %{buildroot}%{_datadir}/icons/McMojave-cir
 %{_datadir}/plasma/look-and-feel/com.github.vinceliuice.McMojave-light
 %{_datadir}/icons/McMojave-circle
 %{_datadir}/icons/McMojave-circle-dark
+%{_datadir}/plasma/layout-templates/contents/layout.js
+%{_datadir}/plasma/layout-templates/metadata.desktop
+%{_datadir}/plasma/layout-templates/org.github.desktop.McMojavePanel
+%{_datadir}/wallpapers/McMojave-light
+%{_datadir}/wallpapers/McMojave
