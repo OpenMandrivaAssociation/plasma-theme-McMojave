@@ -2,13 +2,13 @@
 
 Name: plasma-theme-McMojave
 Summary: Plasma theme resembling macOS
-Version: 2020.07.10
+Version: 2020.07.09
 Release: 1
 # Similar theme exists at https://github.com/zayronxio/Plasma-MojaveCT
 Source0: https://github.com/vinceliuice/McMojave-kde/archive/master/McMojave-kde-%(echo %{version} | sed -e 's/\./-/g').tar.gz
 Source1: https://github.com/vinceliuice/McMojave-circle/archive/master/McMojave-circle-%{circle_version}.tar.gz
 # Let's add a fitting mouse cursor theme...
-Source2: https://github.com/douglascomim/MacOSMOD/archive/master/MacOSMOD-%{version}.tar.gz
+Source2: https://github.com/douglascomim/MacOSMOD/archive/master/MacOSMOD-2020.01.13.tar.gz
 Group: Graphical Desktop/KDE
 License: GPLv3
 BuildArch: noarch
@@ -28,7 +28,7 @@ tar xf %{S:2}
 # Replace per-user install paths with system wide paths
 sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
 
-cd McMojave-circle-master
+cd McMojave-circle-%{circle_version}
 sed -i -e 's,\$HOME/.local,%{buildroot}%{_prefix},g' install.sh
 sed -i -e 's,gtk-update-icon-cache,# gtk-update-icon-cache,g' install.sh
 
@@ -53,7 +53,7 @@ cp -f %{_datadir}/icons/hicolor/scalable/apps/openmandriva.svg plasma/look-and-f
 
 %install
 ./install.sh
-cd McMojave-circle-master
+cd McMojave-circle-%{circle_version}
 ./install.sh
 cd ..
 
