@@ -3,7 +3,7 @@
 Name: plasma-theme-McMojave
 Summary: Plasma theme resembling macOS
 Version: 2020.07.09
-Release: 1
+Release: 2
 # Similar theme exists at https://github.com/zayronxio/Plasma-MojaveCT
 Source0: https://github.com/vinceliuice/McMojave-kde/archive/master/McMojave-kde-%(echo %{version} | sed -e 's/\./-/g').tar.gz
 Source1: https://github.com/vinceliuice/McMojave-circle/archive/master/McMojave-circle-%{circle_version}.tar.gz
